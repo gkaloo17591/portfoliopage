@@ -149,9 +149,9 @@ export default function Home() {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 className="text-[clamp(3.8rem,11vw,10rem)] font-bold leading-[0.92] tracking-[-0.03em] uppercase"
             >
-              Building<br />
-              <span className="text-[#f0ede6]/20">Secure</span><br />
-              Systems.
+              <br />
+              <span className="text-[#f0ede6]/20">Gabriel</span><br />
+              Kaloo.
             </motion.h1>
           </div>
 
