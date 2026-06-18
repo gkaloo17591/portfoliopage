@@ -55,15 +55,6 @@ function useMousePosition() {
     return pos;
 }
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    show: (i = 0) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
-    }),
-};
-
 export default function About() {
     const [menuOpen, setMenuOpen] = useState(false);
     const mouse = useMousePosition();
@@ -128,7 +119,9 @@ export default function About() {
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}
+                        initial={{ opacity: 0, y: -12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
                         className="fixed inset-0 z-40 bg-[#0e0e0e] flex flex-col justify-center px-12 gap-8"
                     >
                         {[...NAV_LINKS, { label: "Contact", href: "/contact" }].map((link) => (
@@ -150,7 +143,9 @@ export default function About() {
                 <div className="grid md:grid-cols-2 gap-16 items-end">
                     <div>
                         <motion.h1
-                            variants={fadeUp} initial="hidden" animate="show" custom={0}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
                             className="text-[clamp(3.8rem,10vw,9rem)] font-bold leading-[0.92] tracking-[-0.03em] uppercase mb-8"
                         >
                             The<br />
@@ -158,7 +153,9 @@ export default function About() {
                             Behind It.
                         </motion.h1>
                         <motion.p
-                            variants={fadeUp} initial="hidden" animate="show" custom={1}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
                             className="text-base text-[#f0ede6]/40 max-w-sm leading-relaxed"
                         >
                             IT Specialist, cybersecurity enthusiast, and developer — building things that are both secure and well-crafted.
@@ -167,22 +164,21 @@ export default function About() {
 
                     {/* ── PHOTO SLOT ── */}
                     <motion.div
-                        variants={fadeUp} initial="hidden" animate="show" custom={2}
-                        className="relative"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
                     >
                         {/*
               TO ADD YOUR PHOTO:
               1. Drop your image into the /public folder e.g. gabriel.jpg
-              2. Replace the entire div below with:
+              2. Replace the div below with:
                  <img src="/gabriel.jpg" alt="Gabriel Kaloo" className="w-full aspect-[3/4] object-cover" />
             */}
                         <div className="w-full aspect-[3/4] flex flex-col items-center justify-center gap-3 border border-[#f0ede6]/10 relative overflow-hidden bg-[#f0ede6]/[0.02]">
-                            {/* Corner accents */}
                             <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#f0ede6]/20" />
                             <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-[#f0ede6]/20" />
                             <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-[#f0ede6]/20" />
                             <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#f0ede6]/20" />
-
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="text-[#f0ede6]/15">
                                 <circle cx="18" cy="13" r="6" stroke="currentColor" strokeWidth="1.2"/>
                                 <path d="M4 32c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
@@ -197,7 +193,10 @@ export default function About() {
             {/* ── BIO ── */}
             <section className="px-8 md:px-12 py-24 grid md:grid-cols-[1fr_2fr] gap-16 border-b border-[#f0ede6]/8">
                 <motion.p
-                    variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                     className="text-xs tracking-[0.3em] uppercase text-[#f0ede6]/30 mt-1"
                 >
                     Background
@@ -210,7 +209,10 @@ export default function About() {
                     ].map((para, i) => (
                         <motion.p
                             key={i}
-                            variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
                             className="text-base text-[#f0ede6]/50 leading-relaxed"
                         >
                             {para}
@@ -226,7 +228,10 @@ export default function About() {
                     {SKILLS.map((group, i) => (
                         <motion.div
                             key={i}
-                            variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i * 0.5}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
                             className="py-8"
                             style={{
                                 borderBottom: i < 2 ? "1px solid rgba(240,237,230,0.08)" : "none",
@@ -258,7 +263,10 @@ export default function About() {
                     {TIMELINE.map((item, i) => (
                         <motion.div
                             key={i}
-                            variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i * 0.5}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: i * 0.07, ease: "easeOut" }}
                             className="flex flex-col md:flex-row gap-4 md:gap-16 py-8"
                             style={{ borderBottom: i < TIMELINE.length - 1 ? "1px solid rgba(240,237,230,0.08)" : "none" }}
                         >
@@ -275,7 +283,10 @@ export default function About() {
             {/* ── CTA ── */}
             <section className="px-8 md:px-12 py-32 border-b border-[#f0ede6]/8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                 <motion.div
-                    variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                     <p className="text-xs tracking-[0.3em] uppercase text-[#f0ede6]/25 mb-4">What's Next</p>
                     <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-[-0.03em] leading-[0.92]">
@@ -284,7 +295,10 @@ export default function About() {
                     </h2>
                 </motion.div>
                 <motion.div
-                    variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
                     className="flex gap-4 flex-wrap"
                 >
                     <a href="/projects"
