@@ -79,7 +79,6 @@ export default function About() {
                 <a href="/" className="text-sm font-semibold tracking-tight text-[#f0ede6]">
                     Gabriel Kaloo
                 </a>
-
                 <ul className="hidden md:flex items-center gap-8">
                     {NAV_LINKS.map((link) => (
                         <li key={link.href}>
@@ -93,14 +92,12 @@ export default function About() {
                         </li>
                     ))}
                 </ul>
-
                 <a
                     href="/contact"
                     className="hidden md:inline-flex px-5 py-2.5 text-xs font-medium tracking-widest uppercase text-[#f0ede6] border border-[#f0ede6]/20 hover:border-[#f0ede6] hover:bg-[#f0ede6] hover:text-[#0e0e0e] transition-all duration-300"
                 >
                     Let's Talk
                 </a>
-
                 <button
                     className="md:hidden text-[#f0ede6]/60 hover:text-[#f0ede6]"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -135,11 +132,6 @@ export default function About() {
 
             {/* ── HERO ── */}
             <section className="relative min-h-[70vh] flex flex-col justify-end px-8 md:px-12 pb-16 pt-32 border-b border-[#f0ede6]/8">
-                <div className="absolute top-24 right-8 md:right-12 text-right hidden md:block">
-                    <p className="text-xs text-[#f0ede6]/30 tracking-widest uppercase mb-1">About Me</p>
-                    <p className="text-xs text-[#f0ede6]/20 tracking-widest uppercase">Long Island, NY</p>
-                </div>
-
                 <div className="grid md:grid-cols-2 gap-16 items-end">
                     <div>
                         <motion.h1
@@ -162,30 +154,18 @@ export default function About() {
                         </motion.p>
                     </div>
 
-                    {/* ── PHOTO SLOT ── */}
+                    {/* ── PHOTO ── */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+                        className="w-full max-w-sm mx-auto md:mx-0 md:ml-auto"
                     >
-                        {/*
-              TO ADD YOUR PHOTO:
-              1. Drop your image into the /public folder e.g. gabriel.jpg
-              2. Replace the div below with:
-                 <img src="/gabriel.jpg" alt="Gabriel Kaloo" className="w-full aspect-[3/4] object-cover" />
-            */}
-                        <div className="w-full aspect-[3/4] flex flex-col items-center justify-center gap-3 border border-[#f0ede6]/10 relative overflow-hidden bg-[#f0ede6]/[0.02]">
-                            <div className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#f0ede6]/20" />
-                            <div className="absolute top-3 right-3 w-5 h-5 border-t border-r border-[#f0ede6]/20" />
-                            <div className="absolute bottom-3 left-3 w-5 h-5 border-b border-l border-[#f0ede6]/20" />
-                            <div className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#f0ede6]/20" />
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="text-[#f0ede6]/15">
-                                <circle cx="18" cy="13" r="6" stroke="currentColor" strokeWidth="1.2"/>
-                                <path d="M4 32c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-                            </svg>
-                            <p className="text-xs tracking-widest uppercase text-[#f0ede6]/20">Your Photo Here</p>
-                            <p className="text-xs text-[#f0ede6]/10">Place image in /public folder</p>
-                        </div>
+                        <img
+                            src="/gabeheadshot.png"
+                            alt="Gabriel Kaloo"
+                            className="w-full aspect-[3/4] object-cover object-top"
+                        />
                     </motion.div>
                 </div>
             </section>
